@@ -2,7 +2,7 @@
 // If there is no license, return an empty string
 function renderLicenseBadge(license) {
   if (license !== "None") {
-    return `![Badge](https://img.shields.io/badge/License-${license}-blue.svg)`
+    return `![Badge](https://img.shields.io/badge/License-${license}&color=blueviolet)`
   }
   return ``;
 }
@@ -10,8 +10,20 @@ function renderLicenseBadge(license) {
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
 function renderLicenseSection(license) {
-  if (license !== "None") {
-
+  if (license === "None") {
+    return ``;
+  }
+  if (license === 'Apache License 2.0') {
+    return `This application is covered by the ${license} license.`
+  }
+  if (license === 'GNU GPLv3.0') {
+    return `This application is covered by the ${license} license.`
+  }
+  if (license === 'MIT License') {
+    return `This application is covered by the ${license} license.`
+  }
+  if (license === 'BSD 2-Clause "Simplified" License') {
+    return `This application is covered by the ${license} license.`
   }
 }
 
@@ -20,7 +32,7 @@ function renderLicenseSection(license) {
 function renderLicenseLink(license) {
   if (license !== 'None') {
     return `## License
-    ${license} `
+    This application is covered by the ${license} license.`
   }
   return ``;
 }
@@ -31,8 +43,10 @@ function generateMarkdown(data) {
   # ${data.title}
   ${renderLicenseBadge(data.license)}
   
+  ${'```'}
   ## Description
   ${data.description}
+  ${'```'}
   
   ## Table of Contents
   - [Installation](#installation)
@@ -40,9 +54,10 @@ function generateMarkdown(data) {
   - [Contributing](#contribution)
   - [Tests](#tests)
   - [License](#license)
+  - [Questions](#questions)
   
   ## Installation
-  ${data.confirmInstallation}
+  ${data.installation}
   
   ## Usage
 
@@ -61,9 +76,10 @@ function generateMarkdown(data) {
   ${renderLicenseSection(data.license)}
   
   ## Questions
-If you have any questions, I can be reached at: ${data.email}
 
-Find me on GitHub: [Email](mailto:${data.email})
+  If you have any questions, I can be reached at: ${data.email}
+
+  Find me on GitHub: [${data.username}](https://github.com/${data.username})
 
   `
 }
