@@ -10,7 +10,7 @@ const questions = [{
     name: 'title',
     message: 'Please write the title of your repository.(Required)',
     validate: nameInput => {
-        if(nameInput) {
+        if (nameInput) {
             return true;
         } else {
             console.log('You must enter a title name.');
@@ -23,7 +23,7 @@ const questions = [{
     name: 'description',
     message: 'Provide a description of the project. (Required)',
     validate: descriptionInput => {
-        if(descriptionInput) {
+        if (descriptionInput) {
             return true;
         } else {
             console.log('You need to provide a project description.');
@@ -36,8 +36,8 @@ const questions = [{
     name: 'table of contents',
     message: 'What would you like to write in your table of contents? (Required)',
     validate: tableOfContentsInput => {
-        if(tableOfContentsInput) {
-            return(true);
+        if (tableOfContentsInput) {
+            return (true);
         } else {
             console.log('You must enter information for the tabel of contents.');
             return false;
@@ -53,7 +53,7 @@ const questions = [{
 {
     type: 'input',
     message: 'How do you install your project? (Required)',
-    when: ({confirmInstallation}) => {
+    when: ({ confirmInstallation }) => {
         if (confirmInstallation) {
             return true;
         } else {
@@ -95,7 +95,7 @@ const questions = [{
         if (contributionInput) {
             return true;
         } else {
-            console.log ('You need toprovide information on how others can contribute.');
+            console.log('You need toprovide information on how others can contribute.');
             return false;
         }
     }
@@ -153,16 +153,17 @@ const questions = [{
 }];
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {
-    fs.writeFile(fileName, data, (err) => {
-        if (err);
-        return err;
-        console.log('Success! Information added to the READ.ME file.');
-    });
-};
+
 
 // TODO: Create a function to initialize app
-function init() {}
+function init() {
+    inquirer.prompt(questions)
+        .then((data) => {
+            fs.writeFile("README.md", generateMarkdown({...data}), (err) =>
+                err ? console.error(err) : console.log('Success! Your professional README is generated.'))
+        });
+
+}
 
 // Function call to initialize app
 init();
