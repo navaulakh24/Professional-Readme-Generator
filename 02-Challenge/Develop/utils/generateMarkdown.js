@@ -2,7 +2,7 @@
 // If there is no license, return an empty string
 function renderLicenseBadge(license) {
   if (license !== "None") {
-    return `![Badge](https://img.shields.io/badge/License-${license}&color=blueviolet)`
+    return `![Badge](https://img.shields.io/badge/License-${license}-&color=blueviolet)`
   }
   return ``;
 }
@@ -10,20 +10,9 @@ function renderLicenseBadge(license) {
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
 function renderLicenseSection(license) {
-  if (license === "None") {
-    return ``;
-  }
-  if (license === 'Apache License 2.0') {
-    return `This application is covered by the ${license} license.`
-  }
-  if (license === 'GNU GPLv3.0') {
-    return `This application is covered by the ${license} license.`
-  }
-  if (license === 'MIT License') {
-    return `This application is covered by the ${license} license.`
-  }
-  if (license === 'BSD 2-Clause "Simplified" License') {
-    return `This application is covered by the ${license} license.`
+  if (license !== 'None') {
+    return `## License
+This project is licensed under the ${license} license.`
   }
 }
 
@@ -31,8 +20,7 @@ function renderLicenseSection(license) {
 // If there is no license, return an empty string
 function renderLicenseLink(license) {
   if (license !== 'None') {
-    return `## License
-    This application is covered by the ${license} license.`
+    return ` - [License](#license)`
   }
   return ``;
 }
@@ -40,48 +28,46 @@ function renderLicenseLink(license) {
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
   return `
-  # ${data.title}
-  ${renderLicenseBadge(data.license)}
+# ${data.title}
+${renderLicenseBadge(data.license)}
   
-  ${'```'}
-  ## Description
-  ${data.description}
-  ${'```'}
+
+## Description
+${data.description}
+
   
-  ## Table of Contents
-  - [Installation](#installation)
-  - [Usage](#usage)
-  - [Contributing](#contribution)
-  - [Tests](#tests)
-  - [License](#license)
-  - [Questions](#questions)
-  
-  ## Installation
-  ${data.installation}
-  
-  ## Usage
+## Table of Contents
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contribution)
+- [Tests](#tests)
+${renderLicenseLink(data.license)}
+- [Questions](#questions)
 
-  ${data.usage}
-  
-  ## Contributing
+## Installation
+${data.installation}
 
-  ${data.contribution}
-  
-  ## Test
+## Usage
 
-  ${data.tests}
+${data.usage}
 
-  ## License
+## Contributing
 
-  ${renderLicenseSection(data.license)}
-  
-  ## Questions
+${data.contribution}
 
-  If you have any questions, I can be reached at: ${data.email}
+## Test
 
-  Find me on GitHub: [${data.username}](https://github.com/${data.username})
+${data.tests}
 
-  `
+${renderLicenseSection(data.license)}
+
+## Questions
+
+If you have any questions, I can be reached at: ${data.email}
+
+Find me on GitHub: [${data.username}](https://github.com/${data.username})
+
+`
 }
 
 module.exports = generateMarkdown;

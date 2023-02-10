@@ -53,3 +53,5 @@ THEN I am taken to the corresponding section of the README
 
     Email: navdeep_aulakh24@hotmail.com
 
+[Web Accessibility](https://drive.google.com/file/d/14lkUgxLPbmypzkVgyIzTR23vpG3fZ03s/view)
+
