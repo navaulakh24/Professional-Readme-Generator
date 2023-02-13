@@ -1,5 +1,5 @@
 
-# Professional Readme Generator
+# Professional Readme Gnerator
 ![Badge](https://img.shields.io/badge/License-MIT-&color=blueviolet)
   
 
@@ -20,15 +20,15 @@ download via github, install inquirer
 
 ## Usage
 
-open terminal, type 'node index.js' go through prompts, readme will be generated
+open terminal, type'node.index.js', go through prompts, readme will be generated
 
 ## Contributing
 
-Please get in touch
+please get in touch
 
 ## Test
 
-Through the terminal
+through the terminal
 
 ## License
 This project is licensed under the MIT license.
